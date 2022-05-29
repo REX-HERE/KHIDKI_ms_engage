@@ -12,7 +12,7 @@ from core.constants import Debug
 # print(patha)
 
 my_path = os.path.abspath(os.path.dirname(__file__))
-patha = os.path.join(my_path, "../datasets/dataframe.pkl")
+patha = os.path.join(my_path, "../datasets/dataframe1.pkl")
 pathb = os.path.join(my_path, "../datasets/similarity_bow.pkl")
 if Debug:
     print(patha)
