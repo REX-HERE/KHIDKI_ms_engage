@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Detail Page
+{% endblock title %}
+
+{% block others %}
+
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+{% endblock others %}
+
+{% block content %}
+
+    {% include 'partials/navbar.html' %}
+    <main class='bg-primary_black min-h-screen w-full'>
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex  items-end bg-cover" style="background-image: url('{{poster}}'); background-size: 100% 100%; background-repeat: no-repeat;">
+            <div>
+                <h2 class="text-6xl font-semibold text-white my-4">
+                    {{movie.title}}
+                </h2>
+                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                    {{movie.description |slice:":50"}}...
+<!--                    {% lorem 1 %}-->
+                </p>
+                <div class="flex my-4">
+                    <a href="{% url 'core:play' movie_id=movie.movie_id %}">
+                    
+                        <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
+                            <ion-icon name="play" class="text-2xl"></ion-icon>
+                            <span class="ml-3 font-medium">
+                                Play
+                            </span>
+                        </button>
+                    </a>
+    
+                    
+                </div>
+            </div>
+        </section> 
+        <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                {% if movie.type == 'seasonal' %}
+                <div style='margin-top:2rem;margin-bottom:2rem;'>
+                
+                    <h2 class="text-gray-200 text-3xl font-medium">
+                        Episode
+                    </h2>
+                    {% for episode in movie.videos.all %}
+                        <h3 class='text-lg'>
+                            <a href="{% url 'core:play' movie_id=movie.uuid %}?epi={{forloop.counter0}}">
+                            
+                            {{forloop.counter}} - {{episode.title}}
+                            </a>
+                        </h3>
+                    {% endfor %}
+                
+                </div>
+                {% endif %}
+
+                <h2 class="text-gray-200 text-3xl font-medium">
+                    Description
+                </h2>
+                <div class="flex justify-center  items-center min-w-full  movie_lis">
+                    <p class="text-gray-100 text-lg">
+                        
+                        {{movie.description}}    
+                    </p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div id="autocomplete" class="autocomplete">
+                  <input class="autocomplete-input"
+                    placeholder="Search for Movie ^_^"
+                    aria-label="Search for Movie ^_^"
+                    style="color:black"
+                  />
+                  <ul class="autocomplete-result-list" style="color:black"></ul>
+                </div>
+                <link
+                      rel="stylesheet"
+                      href="https://unpkg.com/@trevoreyre/autocomplete-js/dist/style.css"
+                />
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="flex justify-center items-center min-w-full  movie_lis">
+                    {% for x in movies_data_bow %}
+
+                        <a href="{% url 'core:show_det' movie_id=x.movie_id age_limit=age_limit %}">
+                            <div class=" h-45 m-4  bg-black-500 overflow-hidden flex-shrink-0 rounded-md cursor-pointer w-50">
+                                <img src={{ x.posterLink }} class="w-full h-full " alt="">
+                                <span class="ml-3 text-2xl font-medium">
+                                    {{ x.movie_title }}
+                                </span>
+                            </div>
+
+                        </a>
+                    {% endfor %}
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="flex justify-center items-center min-w-full  movie_lis">
+                    {% for x in movies_data %}
+
+                        <a href="{% url 'core:show_det' movie_id=x.movie_id age_limit=age_limit %}">
+                            <div class=" h-45 m-4  bg-black-500 overflow-hidden flex-shrink-0 rounded-md cursor-pointer w-50">
+                                <img src={{ x.posterLink }} class="w-full h-full " alt="">
+                                <span class="ml-3 text-2xl font-medium">
+                                    {{ x.movie_title }}
+                                </span>
+                            </div>
+
+                        </a>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <script src="https://unpkg.com/@trevoreyre/autocomplete-js"></script>
+            <script >
+                    let movie_ids = [];
+                    let movie_titles = [];
+                    new Autocomplete('#autocomplete', {
+                        search : async input => {
+                            let Data = null;
+                            try {
+                                const rawData = await fetch(`/search/?title=${input}`);
+                                Data = await rawData.json();
+<!--                                console.log(Data)-->
+                            } catch(err) {
+                                console.log("an exception occured while fetching the data: ");
+                                console.log(err);
+                            }
+                            movie_ids = Data.movies_data;
+                            movie_titles = Data.payload;
+                            return Data.payload;
+                        },
+                        autoSelect: true,
+                        onSubmit: result => {
+                            console.log(movie_ids)
+                            let id = movie_ids[movie_titles.indexOf(result)]
+                            var age_limit='All'
+                            var url = `http://127.0.0.1:8000/movie/detail/${id}/${age_limit}`;
+
+                            window.location.replace(url)
+<!--                            window.open(url)-->
+                        }
+
+                    })
+            </script>
+        </section>
+        
+    </main>
+    
+{% endblock content %}
+
