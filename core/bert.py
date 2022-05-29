@@ -54,6 +54,7 @@ def Fetch_poster(movie_id):
         response= requests.get('https://api.themoviedb.org/3/movie/{}?api_key=c8d2cdd82e972178b58d5fd8cb4295b1&language=en-US'.format(movie_id))
     except requests.ConnectionError:
         response= requests.get('https://api.themoviedb.org/3/movie/{}?api_key=c8d2cdd82e972178b58d5fd8cb4295b1&language=en-US'.format(movie_id))
+        return "https://upload.wikimedia.org/wikipedia/commons/a/ad/BolexH16.jpg"
     data= response.json()
     # if type(data['poster_path']) == 'str':
     #     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
@@ -71,3 +72,5 @@ if Debug:
     print(poster)
     # img = Image.open(r"{}".format(poster))
     # img.show()
+
+
