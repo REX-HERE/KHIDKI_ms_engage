@@ -54,3 +54,13 @@ If we want to compare how similar two items are, we represent each object or ent
 
 **BOW (Bag of words)** - The bag-of-words model is a simplifying representation used in natural language processing. In this model, a text (such as a sentence or a document) is represented as the multiset of its words, disregarding grammar (that’s why I cleaned the data in pre-processing) and even word order but keeping frequencies of the words. well defined fixed-length inputs and by using the Bag-of-Words technique we can convert variable-length texts into a fixed-length vector.
                  
+(Some other Algorithms i have implemented to compare performance of my hybrid, you can find that in colab notebook)-
+
+**Collaborative filtering using Matrix factorisation with SVD and with gradient descent**
+Singular Value Decomposition (SVD)-
+
+SVD decomposes any matrix into singular vectors and singular values. Simply put, SVD is equivalent to Principal Component Analysis (PCA) after mean centering, i.e. shifting all data points so that their mean is on the origin.
+Formally, SVD is decomposition of a matrix R into the product of three matrices: Rm∗n=Um∗mDm∗nVtn∗nRm∗n=Um∗mDm∗nVn∗nt.
+Where Rm∗nRm∗n denotes the utility matrix with n equal to the number of e.g. users and m number exposed items (movies). Um∗mUm∗m is a left singular orthogonal matrix, representing the relationship between users and latent factors. Dm∗nDm∗n is a diagonal matrix (with positive real values) describing the strength of each latent factor. Vtn∗nVn∗nt (transpose) is a right singular orthogonal matrix, indicating the similarity between items and latent factors.
+The general goal of SVD (and other matrix factorization methods) is to decompose the matrix R with all missing rijrij and multiply its components Um∗mDm∗nVtn∗nUm∗mDm∗nVn∗nt once again. As a result, there are no missing values rijrij and it is possible to recommend each user movies (items) they have not seen or purchased yet with the help of these predicted ratings.
+
