@@ -32,8 +32,9 @@ Now open your web browser and paste the url appears in the terminal
 
 ## Features-
 * Multiple profile support
-* Kids Mode
-* Play the movie 
+* Kids Mode (not many movies in the dataset for them :( )
+* Play the movie (not showing original movie :) )
 * file import , export feature in the database (see admin page and go to movie or dropdown)
 * fetching poster via api (tmdb's api) or you can add posters, video in the database itself
+* supports both single movie and movie with multiple episodes (*search: four rooms* that too have 1 episode only, not many in dataset are seasonal :( ) 
 * Secure login, logout
