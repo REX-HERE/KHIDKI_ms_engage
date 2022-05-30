@@ -64,3 +64,7 @@ Formally, SVD is decomposition of a matrix R into the product of three matrices:
 Where Rm∗nRm∗n denotes the utility matrix with n equal to the number of e.g. users and m number exposed items (movies). Um∗mUm∗m is a left singular orthogonal matrix, representing the relationship between users and latent factors. Dm∗nDm∗n is a diagonal matrix (with positive real values) describing the strength of each latent factor. Vtn∗nVn∗nt (transpose) is a right singular orthogonal matrix, indicating the similarity between items and latent factors.
 The general goal of SVD (and other matrix factorization methods) is to decompose the matrix R with all missing rijrij and multiply its components Um∗mDm∗nVtn∗nUm∗mDm∗nVn∗nt once again. As a result, there are no missing values rijrij and it is possible to recommend each user movies (items) they have not seen or purchased yet with the help of these predicted ratings.
 
+## Comparison Time - 
+
+(here classification represents our hybrid) we don't have a cold start problem!!!! 
+![Screenshot 2022-05-29 135242](https://user-images.githubusercontent.com/86410192/171055148-0ea7bc72-0fb1-4d4f-9ac7-06c8aa5d03c4.png)
