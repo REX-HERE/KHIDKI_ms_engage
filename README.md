@@ -1,32 +1,39 @@
 # KHIDKI_ms_engage
 
-OVERVIEW OF ALGOS AND COMPARISON
+**Deployed at** => http://35.202.149.148:8000
 
-BAG OF WORDS =>
-          let n =4			
-            word1	word2	word3	word4
-		mv tag1	4	      3	    2	   2
-		mv tag2	4	      6	    3	   3
-		mv tag3	2     	5	    4	   9
-		mv tag4	5	      0	    4	   4
-      n- dimentional vector space from which we will be taking similar vectors(movies) using cosine similarity
-      
-  BERT =>       bert is bi-directional so looks at both direction of words that's why it is a more sentence based and that's why it gives sentimental recommendation to based on movie's overview
-                
-                   
-                   
-                   collaborative filtering  [drawbacks = cold-start]
-           user-based                     item-based (amazon)
+**IMPORTANT**
+Due to being big git lfs is used to add file in Github repo but lfs creates some error in pickle file so kindly replace files of datasets with files in: https://drive.google.com/drive/folders/1g1ZUfKdcMLLiEZY3Eley7jp-cqxxJH8M?usp=sharing
 
-                  a user may have some things in common and still likes somethings different
-                    that's why item-based > user-based mostly
-            
-            
-            matrix factorisation   we can get  u*m  from      u*k  and k*m   k is common 
-matrix factorisation via SVD > gradient descent and  NMF  on the basis of RMSE (error)
-            SVD=> Rm∗n = Um∗m Dm∗n Vtn∗n
-            
-           ![Screenshot 2022-05-29 135242](https://user-images.githubusercontent.com/86410192/170861985-c4b112f7-a7f4-42cf-92db-63a405453cf0.png)
+**Requirements**- python version >= 3.9, sklearn. 
 
+## Installation in windows-
 
-and that's why i build a hybrid of BERT and BAG OF WORDS
+Download this repository and cd in the folder
+
+Create a virtual environment
+
+```bash
+python -m venv .\venv
+venv\scripts\activate
+```
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install dependencies of this project
+
+```bash
+pip install -r requirements.txt
+```
+## Usage
+
+To run the website on the local host
+```bash
+python manage.py runserver
+```
+Now open your web browser and paste the url appears in the terminal
+
+## Features-
+* Multiple profile support
+* Kids Mode
+* Play the movie 
+* file import , export feature in the database (see admin page and go to movie or dropdown)
+* fetching poster via api (tmdb's api) or you can add posters, video in the database itself
+* Secure login, logout
