@@ -1,4 +1,7 @@
-# KHIDKI_ms_engage
+# KHIDKI_ms_engage 
+
+A hybrid (Google's Bert + Contant based via bag of words, and then KNN (K-Nearest Neighbor) using cosine similarity) movie recommendation web application
+using DJANGO for backend, UI is inspired by NETFLIX.
 
 **Deployed at** => http://35.202.149.148:8000
 
@@ -38,3 +41,10 @@ Now open your web browser and paste the url appears in the terminal
 * fetching poster via api (tmdb's api) or you can add posters, video in the database itself
 * supports both single movie and movie with multiple episodes (*search: four rooms* that too have 1 episode only, not many in dataset are seasonal :( ) 
 * Secure login, logout
+
+## Algorithms used and comparison-
+**Google's BERT** - 
+                  a neural network-based technique for natural language processing (NLP) pre-training called Bidirectional Encoder Representations from Transformers, or as we call it- [BERT](https://ai.googleblog.com/2018/11/open-sourcing-bert-state-of-art-pre.html), for short. 
+This breakthrough was the result of Google research on [transformers](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html): **models that process words in relation to all the other words in a sentence**, rather than one-by-one in order. BERT models can therefore consider the full context of a word by *looking at the words that come before and after it*—particularly useful for understanding the intent behind search queries, here for understanding movie’s overview and description.
+                  
+                 
