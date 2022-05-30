@@ -47,7 +47,7 @@
                     </h2>
                     {% for episode in movie.videos.all %}
                         <h3 class='text-lg'>
-                            <a href="{% url 'core:play' movie_id=movie.uuid %}?epi={{forloop.counter0}}">
+                            <a href="{% url 'core:play' movie_id=movie.movie_id %}?epi={{forloop.counter0}}">
                             
                             {{forloop.counter}} - {{episode.title}}
                             </a>
