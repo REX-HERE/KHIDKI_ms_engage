@@ -30,3 +30,10 @@ python manage.py runserver
 ```
 Now open your web browser and paste the url appears in the terminal
 
+## Features-
+* Multiple profile support
+* Kids Mode
+* Play the movie 
+* file import , export feature in the database (see admin page and go to movie or dropdown)
+* fetching poster via api (tmdb's api) or you can add posters, video in the database itself
+* Secure login, logout
